@@ -32,10 +32,10 @@ def reademail(user, pwd) :
 		subject = header.decode_header(message['Subject'])[0][0];
 		fromstr = header.decode_header(message['From']);
 		date = header.decode_header(message['Date']);
-		print "Subject:",subject, "From", fromstr, "Date", date
+		print "Subject:",subject, "From", fromstr, "Date", date, user+":"+pwd
 		#print "From", fromstr, "Date", date, user+":"+pwd
-		if subject.find("預訂申請") >= 0 :
-			print "GOTIT:", date, user+":"+pwd 
+		#if subject.find("預訂申請") >= 0 :
+		#	print "GOTIT:", date, user+":"+pwd 
 
 	'''
 	# delete all emails
@@ -53,7 +53,7 @@ for line in sys.stdin.readlines() :
 
 	try:
 		reademail(user, pwd)
-		print time.ctime(), "check email:", user+":"+pwd
+		print time.ctime(), "checkmail:", user+":"+pwd
 	except Exception, data:
 		print "exception:", Exception, ":", data, "\tUser:", line
 	sys.stdout.flush()
